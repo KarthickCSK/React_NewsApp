@@ -1,0 +1,25 @@
+fetch("http://localhost:8080/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body:JSON.stringify(this.state.saveJson) 
+		}).then(function(res) {
+			if (res.ok) {
+				alert("Perfect! Your settings are saved.");
+			} else if (res.status == 400) {
+				alert("Oops! You are not authorized.");
+			}
+		}, function(e) {
+			alert("Error submitting form!");
+		});
+
+
+
+		$.ajax({
+            url:" http://localhost:8080/news/delete",
+            type: "DELETE",
+            dataType: 'JSON',
+            data:this.state.finalData,
+
+        });
